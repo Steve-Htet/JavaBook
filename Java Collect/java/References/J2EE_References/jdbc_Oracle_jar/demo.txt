@@ -1,0 +1,61 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+public class DBConnection {
+ 
+            Connection con;
+            Statement stmt;
+             ResultSet rs;
+
+            public DBConnection() throws ClassNotFoundException, SQLException{
+
+                         Class.forName("oracle.jdbc.driver.OracleDriver");
+
+                        System.out.println("driver loaded successfully.");
+
+                         con=DriverManager.getConnection("jdbc:oracle:thin:@10.236.133.26:1521:db9","scott","tiger");
+
+                        System.out.println("got connection");
+
+                        stmt=con.createStatement();
+ 
+                        rs=stmt.executeQuery("select * from emp");
+ 
+                        while(rs.next()){
+ 
+                                    System.out.println(rs.getString(2));
+
+                        }
+
+            }
+
+
+            public static void main(String[] args) {
+
+             try {     
+			 new DBConnection();
+ 
+
+                        } catch (ClassNotFoundException e) {
+ 
+                                    e.printStackTrace();
+ 
+                        } catch (SQLException e) {
+
+ 
+                                    e.printStackTrace();
+
+
+                        }
+
+ 
+
+            }
+
+ 
+
+ 
+
+ }

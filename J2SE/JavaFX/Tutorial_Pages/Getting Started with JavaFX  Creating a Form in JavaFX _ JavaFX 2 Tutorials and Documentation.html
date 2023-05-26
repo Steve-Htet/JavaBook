@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <title>Getting Started with JavaFX: Creating a Form in JavaFX | JavaFX 2 Tutorials and Documentation</title> 
+
+<!-- Add DARB meta tags here -->
+
+<!-- Start JavaFX meta tags -->
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.16 Build 1">
+<meta name="date" content="2013-08-30T17:28:44Z">
+<meta name="description" content="Creating a form is a common activity when developing an application. This tutorial teaches you the basics of screen layout, how to add controls to a layout pane, and how to create input events.">
+<meta name="robots" content="noarchive">
+<meta name="doctitle" content="Creating a Form in JavaFX">
+<meta name="relnum" content="Release 2.2.40">
+<meta name="partnum" content="E20473-09">
+<meta name="description" content="Get started with JavaFX 2 by creating simple applications that introduce you to layouts, CSS, FXML, visual effects, animation, and deployment.">
+<meta name="keywords" content="Get started with JavaFX, get started with JavaFX 2, get started guide, JavaFX getting started, JavaFX getting started guide, JavaFX, JavaFX 2, Java FX, Java FX 2, RIA, Web, HTML, developer, Internet, CSS, deployment, animation">
+
+<!-- Persistent copyright link from DARB output -->
+<link rel="copyright" href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm" title="Copyright" type="text/html">
+
+<!-- Links to JavaFX output template style sheets -->
+<link href="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-position.css" rel="stylesheet" type="text/css">
+<link href="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-fonts.css" rel="stylesheet" type="text/css">
+
+
+<!-- START Prev and next buttons  -->
+
+<!-- END prev/next link tags -->
+
+
+<!-- Markup to fix IE CSS display problems -->
+<!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+.javafx #sidebar1 { width: 220px; }
+</style>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.javafx #sidebar1 { padding-top: 30px; }
+.javafx #mainContent li p{ margin:0; padding-bottom: 0px; }
+.javafx #mainContent { zoom: 1; }
+.javafx #mainContent {
+	margin: 0px 290px 0px 0px; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	width:600px;/*should be 615 but ie6 doesn't work;*/
+	border-right-style:none;
+	border-right-color:#C7C7C7;
+	border-right-width:0px;
+	background-image:url(../../javafx/images/fx_boxback.jpg);
+	background-repeat:no-repeat;
+	z-index:0;
+} 
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+
+<!-- Visibility toggle script -->
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
+</head>
+
+<body class="javafx">
+<!-- The following markup is required for accessibility -->
+<noscript>
+JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+</noscript> 
+
+
+<!-- ///////// Container ///////// -->
+  <div id="container">
+
+<!--///////// Header /////////-->
+  <div id="header">
+  	<div id="headerfxtrail" class="breadcrumb"><a href="http://docs.oracle.com/javafx/index.html">JavaFX Documentation Home</a> &gt; <a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm">Getting Started with JavaFX</a>
+  </div>
+  <!-- end #header --></div>
+<!--///////// End Header /////////-->
+  
+  
+<!--///////// Start Side Bar /////////-->  
+  <div id="sidebar">
+   
+  <!-- Sidebar item 1. This <div> is obligatory --> 
+  <div id="sidebar_version_box" class="FX_type_med_gry">
+     <h1>Release: JavaFX 2.2.40</h1>
+     <p>Last Updated: September 2013</p>
+   <p><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.pdf">Download as PDF</a></p>  
+  <!-- end obligatory sidebar_version_box --></div>
+  
+  <!-- Sidebar item 2 Table of Contents. This <div> is optional --> 
+  <div id="sidebar_toc_box" class="FX_type_med_gry">
+     <h2 class="boxtitle"><a href="#" onclick="toggle_visibility('toc');">[+] Show/Hide Table of Contents</a></h2>
+  <div id="toc" style="display:none;">
+
+   <h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm#BABGIDID">About This Tutorial</a></h2>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#CHDBCAII"><span class="secnum">1</span> Hello World, JavaFX Style</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref2">Construct the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref4">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref6">Where to Go Next</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABDDGEE"><span class="secnum">2</span> Creating a Form in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref8">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref9">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref10">Add Text, Labels, and Text Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref12">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABHABBF">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref14">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref16">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#BEIBBBCI"><span class="secnum">3</span> Fancy Forms with JavaFX CSS</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref18">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref19">Create the CSS File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref20">Add a Background Image</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref22">Style the Labels</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref24">Style Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref26">Style the Button</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref29">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCCHII"><span class="secnum">4</span> Using FXML to Create a User Interface</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDGFFFF">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDFJABA">Load the FXML Source File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDEBIBJ">Modify the Import Statements</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCDGEF">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCBAAH">Add Text and Password Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIAHDH">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDJDGCE">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIBFJD">Use a Scripting Language to Handle Events</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CIHCIEED">Style the Application with CSS</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#sthref35">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#BABCJFJC"><span class="secnum">5</span> Animation and Visual Effects in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref38">Set Up the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref39">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref40">Add Graphics</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref42">Add a Visual Effect</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref44">Create a Background Gradient</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref47">Apply a Blend Mode</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref49">Add Animation</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref51">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA"><span class="secnum">6</span> Deploying Your First JavaFX Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFBCHC">Deployment Modes</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCHEHA">Packaging the Application in NetBeans IDE</a>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#sthref54">Sizing the Application Window</a></li>
+</ul>
+</li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCIGGB">Running the Application Outside NetBeans IDE</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFAFEC">Deploying the Packaged Files</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABGAGDA">Other Ways to Package JavaFX Applications</a></li>
+</ul> 
+
+  <!-- End toggle box --></div>
+  <!-- End item 2 TOC box --></div> 
+  
+  <!-- Sidebar item 3 DemoApp box. This <div> is optional --> 
+     <div id="sidebar_demoapp_box" class="FX_type_med_gry">
+
+    <h2 class="boxtitle">Application Files</h2>
+    <h3>View Source Code</h3>
+      <ul>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.java.html">Login.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.java.html">Login.java with CSS</a></li>
+
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.css.html">Login.css</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/background.jpg.html">background.jpg</a></li>
+       <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.java.html">FXMLExample.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_example.fxml.html">fxml_example.fxml</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExampleController.java.html">FXMLExampleController.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a></li>
+
+      </ul>
+    
+	 <h3>Download Source Code</h3>
+      <ul>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.zip">Login.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.zip">LoginCSS.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.zip">FXMLExample.zip</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.zip">ColorfulCircles.zip</a></li>
+      </ul>
+  
+    
+   </div>  
+  <!-- End item 3 DemoApp box -->
+  
+  <!-- Sidebar item 4 Profile box. This <div> is optional --> 
+     <div id="sidebar_profile_box" class="FX_type_med_gry">
+    <h2 class="boxtitle">Profiles</h2>
+
+    <div class="profile">
+     <h3>Gail Chappell</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p>
+        <img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/gail_chappell.jpeg" alt="The picture of the author">Gail is part of the JavaFX documentation team and enjoys working on cutting-edge, innovative documentation. 
+    </p>
+
+   </div>
+
+    <div class="profile">
+    <h3>Nancy Hildebrandt</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p><img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/nancy_hildebrandt.jpeg" alt="The picture of the author">Nancy is a technical writer 
+    in the JavaFX group. She has a background in content management systems, enterprise server-client software, and XML. 
+    She lives on 480 acres in the middle of nowhere with horses, a donkey, dogs, cats, and chickens, and stays 
+    connected by satellite. </p>
+   </div>
+
+
+    </div>  
+  <!-- end Box 4 Profile -->  
+  
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <div id="sidebar_feedback_box" class="FX_type_med_gry">
+
+<h2 class="boxtitle">We Welcome Your Comments</h2>
+
+<p>Send us <a href="mailto:jfx-docs-feedback_ww@oracle.com?subject=Feedback:%20Getting%20Started%20with%20JavaFX:%20Creating%20a%20Form%20in%20JavaFX">feedback about this document.</a></p>
+
+<p>If you have questions about JavaFX, please go to the <a href="http://forums.oracle.com/forums/forum.jspa?forumID=1385">forum.</a></p>
+
+</div>
+
+
+  <!-- end Box 5 Profile -->
+
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <!-- [REPLACE_SINGLEP_FEEDBACK] -->
+  <!-- end Box 5 Profile -->
+  
+  <!-- end #sidebar --></div>
+  
+  <!--///////// End Side Bar /////////-->
+  
+  
+<!--///////// Main Content /////////-->
+  <div id="mainContent">
+  
+  <!-- Book Info div is used only for multipage documents -->
+  <div id="bookTitle">
+      <h1>Getting Started with JavaFX </h1>
+  </div> 
+  <!-- End BookInfo div tag -->
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/css.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+   
+  
+  <div id="ind"> 
+
+<!-- /////////////// Start content copied from DARB output ////////////// -->
+
+	<a id="BABCIIBJ" name="BABCIIBJ"></a><a id="JFXGS165" name="JFXGS165"></a><a id="BABDDGEE" name="BABDDGEE"></a>
+<h1 class="chapter"><span class="secnum">2</span> Creating a Form in JavaFX</h1>
+<a id="JFXGS166" name="JFXGS166"></a>
+<p>Creating a form is a common activity when developing an application. 
+This tutorial teaches you the basics of screen layout, how to add 
+controls to a layout pane, and how to create input events.</p>
+<p>In this tutorial, you will use JavaFX to build the login form shown in <a href="#BABJHICA">Figure 2-1</a>.</p>
+<div class="figure"><a id="BABJHICA" name="BABJHICA"></a><a id="JFXGS245" name="JFXGS245"></a>
+<p class="titleinfigure">Figure 2-1 Login Form</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login.png" alt="Description of Figure 2-1 follows" title="Description of Figure 2-1 follows" longdesc="img_text/login.htm"><br>
+<a id="sthref7" name="sthref7" href="http://docs.oracle.com/javafx/2/get_started/img_text/login.htm">Description of "Figure 2-1 Login Form"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p>The tool used in this Getting Started tutorial is NetBeans IDE. 
+Before you begin, ensure that the version of NetBeans IDE that you are 
+using supports JavaFX 2. See the <a href="http://docs.oracle.com/javafx/release-documentation.html">System Requirements</a> for details.</p>
+<a id="JFXGS168" name="JFXGS168"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref8" name="sthref8"></a>
+<h2 class="sect1">Create the Project</h2>
+<p>Your first task is to create a JavaFX project in NetBeans IDE and name it Login:</p>
+<ol>
+<li>
+<p>From the <span class="bold">File</span> menu, choose <span class="bold">New Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="bold">JavaFX</span> application category, choose <span class="bold">JavaFX Application</span>. Click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Name the project <span class="bold">Login</span> and click <span class="bold">Finish</span>.</p>
+<p>When you create a JavaFX project, NetBeans IDE provides a Hello World
+ application as a starting point, which you have already seen if you 
+followed the <a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm">Hello World</a> tutorial.</p>
+</li>
+<li>
+<p>Remove the <code>start()</code> method that NetBeans IDE generated and replace it with the code in <a href="#CFHIBBBH">Example 2-1</a>.</p>
+<div class="example"><a id="CFHIBBBH" name="CFHIBBBH"></a><a id="JFXGS169" name="JFXGS169"></a>
+<p class="titleinexample">Example 2-1 Application Stage</p>
+<pre xml:space="preserve" class="oac_no_warn">@Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("JavaFX Welcome");
+        
+        primaryStage.show();
+    }
+</pre></div>
+<!-- class="example" --></li>
+</ol>
+<p><span class="bold">Tip:</span> After you add sample code into a 
+NetBeans project, press Ctrl (or Cmd) + Shift + I to import the required
+ packages. When there is a choice of import statements, choose the one 
+that starts with <code>javafx</code>.</p>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS170" name="JFXGS170"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref9" name="sthref9"></a>
+<h2 class="sect1">Create a GridPane Layout</h2>
+<p>For the login form, use a <code>GridPane</code> layout because it 
+enables you to create a flexible grid of rows and columns in which to 
+lay out controls. You can place controls in any cell in the grid, and 
+you can make controls span cells as needed.</p>
+<p>The code to create the <code>GridPane</code> layout is in <a href="#CFHEAHGB">Example 2-2</a>. Add the code before the line <code>primaryStage.show();</code></p>
+<div class="example"><a id="CFHEAHGB" name="CFHEAHGB"></a><a id="JFXGS171" name="JFXGS171"></a>
+<p class="titleinexample">Example 2-2 GridPane with Gap and Padding Properties</p>
+<pre xml:space="preserve" class="oac_no_warn">GridPane grid = new GridPane();
+grid.setAlignment(Pos.CENTER);
+grid.setHgap(10);
+grid.setVgap(10);
+grid.setPadding(new Insets(25, 25, 25, 25));
+
+Scene scene = new Scene(grid, 300, 275);
+primaryStage.setScene(scene);
+</pre></div>
+<!-- class="example" -->
+<p><a href="#CFHEAHGB">Example 2-2</a> creates a <code>GridPane</code> object and assigns it to the variable named <code>grid</code>.
+ The alignment property changes the default position of the grid from 
+the top left of the scene to the center. The gap properties manage the 
+spacing between the rows and columns, while the padding property manages
+ the space around the edges of the grid pane. The insets are in the 
+order of top, right, bottom, and left. In this example, there are <code>25</code> pixels of padding on each side.</p>
+<p>The scene is created with the grid pane as the root node, which is a 
+common practice when working with layout containers. Thus, as the window
+ is resized, the nodes within the grid pane are resized according to 
+their layout constraints. In this example, the grid pane remains in the 
+center when you grow or shrink the window. The padding properties ensure
+ there is a padding around the grid pane when you make the window 
+smaller.</p>
+<p>This code sets the scene width and height to 300 by 275. If you do 
+not set the scene dimensions, the scene defaults to the minimum size 
+needed to display its contents.</p>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS172" name="JFXGS172"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref10" name="sthref10"></a>
+<h2 class="sect1">Add Text, Labels, and Text Fields</h2>
+<p>Looking at <a href="#BABJHICA">Figure 2-1</a>, you can see that the 
+form requires the title “Welcome “and text and password fields for 
+gathering information from the user. The code for creating these 
+controls is in <a href="#CFHFDFHJ">Example 2-3</a>. Add this code after the line that sets the grid padding property.</p>
+<div class="example"><a id="CFHFDFHJ" name="CFHFDFHJ"></a><a id="JFXGS173" name="JFXGS173"></a>
+<p class="titleinexample">Example 2-3 Controls</p>
+<pre xml:space="preserve" class="oac_no_warn">Text scenetitle = new Text("Welcome");
+scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+grid.add(scenetitle, 0, 0, 2, 1);
+
+Label userName = new Label("User Name:");
+grid.add(userName, 0, 1);
+
+TextField userTextField = new TextField();
+grid.add(userTextField, 1, 1);
+
+Label pw = new Label("Password:");
+grid.add(pw, 0, 2);
+
+PasswordField pwBox = new PasswordField();
+grid.add(pwBox, 1, 2);
+</pre></div>
+<!-- class="example" -->
+<p>The first line creates a <code>Text</code> object that cannot be edited, sets the text to <code>Welcome</code>, and assigns it to a variable named <code>scenetitle</code>. The next line uses the <code>setFont()</code> method to set the font family, weight, and size of the <code>scenetitle</code>
+ variable. Using an inline style is appropriate where the style is bound
+ to a variable, but a better technique for styling the elements of your 
+user interface is by using a style sheet. In the next tutorial, <a href="http://docs.oracle.com/javafx/2/get_started/css.htm#BABBGJBI">Fancy Forms with JavaFX CSS</a>, you will replace the inline style with a style sheet.</p>
+<p>The <code>grid.add()</code> method adds the <code>scenetitle</code> variable to the layout <code>grid</code>. The numbering for columns and rows in the grid starts at zero, and <code>scenetitle</code> is added in column 0, row 0. The last two arguments of the <code>grid.add</code><code>()</code> method set the column span to 2 and the row span to 1.</p>
+<p>The next lines create a <code>Label</code> object with text <code>User Name</code> at column 0, row 1 and a <code>Text Field</code>
+ object that can be edited. The text field is added to the grid pane at 
+column 1, row 1. A password field and label are created and added to the
+ grid pane in a similar fashion.</p>
+<p>When working with a grid pane, you can display the grid lines, which 
+is useful for debugging purposes. In this case, you can add <code>grid.setGridLinesVisible(true)</code>
+ after the line that adds the password field. Then, when you run the 
+application, you see the lines for the grid columns and rows as well as 
+the gap properties, as shown in <a href="#BABFFDCJ">Figure 2-2</a>.</p>
+<div class="figure"><a id="BABFFDCJ" name="BABFFDCJ"></a><a id="JFXGS246" name="JFXGS246"></a>
+<p class="titleinfigure">Figure 2-2 Login Form with Grid Lines</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_gridlines_co.png" alt="Description of Figure 2-2 follows" title="Description of Figure 2-2 follows" longdesc="img_text/login_gridlines_co.htm"><br>
+<a id="sthref11" name="sthref11" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_gridlines_co.htm">Description of "Figure 2-2 Login Form with Grid Lines"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS175" name="JFXGS175"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref12" name="sthref12"></a>
+<h2 class="sect1">Add a Button and Text</h2>
+<p>The final two controls required for the application are a <code>Button</code> control for submitting the data and a <code>Text</code> control for displaying a message when the user presses the button.</p>
+<p>First, create the button and position it on the bottom right, which 
+is a common placement for buttons that perform an action affecting the 
+entire form. The code is in <a href="#CFHIJGHC">Example 2-4</a>. Add this code before the code for the scene.</p>
+<div class="example"><a id="CFHIJGHC" name="CFHIJGHC"></a><a id="JFXGS176" name="JFXGS176"></a>
+<p class="titleinexample">Example 2-4 Button</p>
+<pre xml:space="preserve" class="oac_no_warn">Button btn = new Button("Sign in");
+HBox hbBtn = new HBox(10);
+hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+hbBtn.getChildren().add(btn);
+grid.add(hbBtn, 1, 4);
+</pre></div>
+<!-- class="example" -->
+<p>The first line creates a button named <code>btn</code> with the label <code>Sign in,</code> and the second line creates an <code>HBox</code> layout pane named <code>hbBtn</code> with spacing of <code>10</code> pixels. The <code>HBox</code> pane sets an alignment for the button that is different from the alignment applied to the other controls in the grid pane. The <code>alignment</code> property has a value of <code>Pos.BOTTOM_RIGHT</code>,
+ which positions a node at the bottom of the space vertically and at the
+ right edge of the space horizontally. The button is added as a child of
+ the <code>HBox</code> pane, and the <code>HBox</code> pane is added to the grid in column 1, row 4.</p>
+<p>Now, add a <code>Text</code> control for displaying the message, as shown in <a href="#BABHGHFI">Example 2-5</a>. Add this code before the code for the scene.</p>
+<div class="example"><a id="BABHGHFI" name="BABHGHFI"></a><a id="JFXGS177" name="JFXGS177"></a>
+<p class="titleinexample">Example 2-5 Text</p>
+<pre xml:space="preserve" class="oac_no_warn">final Text actiontarget = new Text();
+        grid.add(actiontarget, 1, 6);
+</pre></div>
+<!-- class="example" -->
+<p><a href="#BABFICHF">Figure 2-3</a> shows the form now. You will not see the text message until you work through the next section of the tutorial, <a href="#BABHABBF">Add Code to Handle an Event</a>.</p>
+<div class="figure"><a id="BABFICHF" name="BABFICHF"></a><a id="JFXGS247" name="JFXGS247"></a>
+<p class="titleinfigure">Figure 2-3 Login Form with Button</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login.png" alt="Description of Figure 2-3 follows" title="Description of Figure 2-3 follows" longdesc="img_text/login.htm"><br>
+<a id="sthref13" name="sthref13" href="http://docs.oracle.com/javafx/2/get_started/img_text/login.htm">Description of "Figure 2-3 Login Form with Button"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS179" name="JFXGS179"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="BABHABBF" name="BABHABBF"></a>
+<h2 class="sect1">Add Code to Handle an Event</h2>
+<p>Finally, make the button display the text message when the user presses it. Add the code in <a href="#CFHDCFFD">Example 2-6</a> before the code for the scene.</p>
+<div class="example"><a id="CFHDCFFD" name="CFHDCFFD"></a><a id="JFXGS180" name="JFXGS180"></a>
+<p class="titleinexample">Example 2-6 Button Event</p>
+<pre xml:space="preserve" class="oac_no_warn">btn.setOnAction(new EventHandler&lt;ActionEvent&gt;() {
+ 
+    @Override
+    public void handle(ActionEvent e) {
+        actiontarget.setFill(Color.FIREBRICK);
+        actiontarget.setText("Sign in button pressed");
+    }
+});
+</pre></div>
+<!-- class="example" -->
+<p>The <code>setOnAction()</code> method is used to register an event handler that sets the <code>actiontarget</code> object to <code>Sign in button pressed</code> when the user presses the button. The color of the <code>actiontarget</code> object is set to firebrick red.</p>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS181" name="JFXGS181"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref14" name="sthref14"></a>
+<h2 class="sect1">Run the Application</h2>
+<p>Right-click the <span class="bold">Login</span> project node in the Projects window, choose <span class="bold">Run</span>, and then click the Sign in button. <a href="#BABIAIFI">Figure 2-4</a> shows the results. If you run into problems, then take a look at the code in the <a href="http://docs.oracle.com/javafx/2/get_started/Login.java.html"><code>Login.java</code></a> file.</p>
+<div class="figure"><a id="BABIAIFI" name="BABIAIFI"></a><a id="JFXGS248" name="JFXGS248"></a>
+<p class="titleinfigure">Figure 2-4 Final Login Form</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_final.png" alt="Description of Figure 2-4 follows" title="Description of Figure 2-4 follows" longdesc="img_text/login_final.htm"><br>
+<a id="sthref15" name="sthref15" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_final.htm">Description of "Figure 2-4 Final Login Form"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS183" name="JFXGS183"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref16" name="sthref16"></a>
+<h2 class="sect1">Where to Go from Here</h2>
+<p>This concludes the basic form tutorial, but you can continue reading the following tutorials on developing JavaFX applications.</p>
+<ul>
+<li>
+<p><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#BABBGJBI">Fancy Forms with JavaFX CSS</a> provides tips on how to add a background image and radically change the style of the text, label, and button in the login form.</p>
+</li>
+<li>
+<p><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CIHHGHJJ">Using FXML to Create a User Interface</a>
+ shows an alternate method for creating the login user interface. FXML 
+is an XML-based language that provides the structure for building a user
+ interface separate from the application logic of your code.</p>
+</li>
+<li>
+<p><a href="http://docs.oracle.com/javafx/2/layout/jfxpub-layout.htm">Working With Layouts in JavaFX</a> explains the built-in JavaFX layout panes, and tips and tricks for using them.</p>
+</li>
+<li>
+<p><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA">Deploying Your First JavaFX Application</a> provides information on how to run your application outside NetBeans IDE.</p>
+</li>
+</ul>
+<p>Also try out the JavaFX samples, which you can download from the JDK Demos and Samples section of the Java SE Downloads page at <code><a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a></code>. The Ensemble sample contains examples of layouts and their source code.</p>
+</div>
+<!-- class="sect1" -->
+	
+	
+
+    <!-- /////////////// End content copied from DARB output ////////////// -->
+
+    </div>  <!-- End ind div tag --> 
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/css.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+
+    
+<!-- end #mainContent --></div><br class="clearfloat">
+<!--///////// End Main Content /////////-->	
+    
+    
+    
+<!--///////// Footer /////////-->
+  <div id="footer">
+  
+  <!-- Start SiteCatalyst (Omniture) code   -->
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code_download.js"></script>
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Creating%20a%20Form%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code.js"></script>
+
+ 
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+<!--  Below code will send the info to Omniture server -->
+<script type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+ 
+<!-- End SiteCatalyst code --> 
+
+<!-- Footer Legal info -->
+  <div id="fx_blur"><span class="copyrightlogo">Copyright&nbsp;©&nbsp;2008, 2013,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span> 
+  <a href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm"><br>
+  <span class="copyrightlogo">Legal Notices</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="copyrightlogo"><a href="http://docs.oracle.com/javafx/dcommon/html/accss.htm">Accessibility Statement</a></span>
+  </div> <!-- End footer legal info -->
+  
+  <!-- end #footer --></div>
+<!--///////// End Footer /////////-->
+
+<!-- end #container --></div>
+
+
+
+
+
+</body></html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <title>Getting Started with JavaFX: Fancy Forms with JavaFX CSS | JavaFX 2 Tutorials and Documentation</title> 
+
+<!-- Add DARB meta tags here -->
+
+<!-- Start JavaFX meta tags -->
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.16 Build 1">
+<meta name="date" content="2013-08-30T17:28:44Z">
+<meta name="description" content="This tutorial is about making your JavaFX application look attractive by adding a Cascading Style Sheet (CSS). You develop a design, create a .css file, and apply the new styles.">
+<meta name="robots" content="noarchive">
+<meta name="doctitle" content="Fancy Forms with JavaFX CSS">
+<meta name="relnum" content="Release 2.2.40">
+<meta name="partnum" content="E20473-09">
+<meta name="description" content="Get started with JavaFX 2 by creating simple applications that introduce you to layouts, CSS, FXML, visual effects, animation, and deployment.">
+<meta name="keywords" content="Get started with JavaFX, get started with JavaFX 2, get started guide, JavaFX getting started, JavaFX getting started guide, JavaFX, JavaFX 2, Java FX, Java FX 2, RIA, Web, HTML, developer, Internet, CSS, deployment, animation">
+
+<!-- Persistent copyright link from DARB output -->
+<link rel="copyright" href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm" title="Copyright" type="text/html">
+
+<!-- Links to JavaFX output template style sheets -->
+<link href="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-position.css" rel="stylesheet" type="text/css">
+<link href="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-fonts.css" rel="stylesheet" type="text/css">
+
+
+<!-- START Prev and next buttons  -->
+
+<!-- END prev/next link tags -->
+
+
+<!-- Markup to fix IE CSS display problems -->
+<!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+.javafx #sidebar1 { width: 220px; }
+</style>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.javafx #sidebar1 { padding-top: 30px; }
+.javafx #mainContent li p{ margin:0; padding-bottom: 0px; }
+.javafx #mainContent { zoom: 1; }
+.javafx #mainContent {
+	margin: 0px 290px 0px 0px; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	width:600px;/*should be 615 but ie6 doesn't work;*/
+	border-right-style:none;
+	border-right-color:#C7C7C7;
+	border-right-width:0px;
+	background-image:url(../../javafx/images/fx_boxback.jpg);
+	background-repeat:no-repeat;
+	z-index:0;
+} 
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+
+<!-- Visibility toggle script -->
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
+</head>
+
+<body class="javafx">
+<!-- The following markup is required for accessibility -->
+<noscript>
+JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+</noscript> 
+
+
+<!-- ///////// Container ///////// -->
+  <div id="container">
+
+<!--///////// Header /////////-->
+  <div id="header">
+  	<div id="headerfxtrail" class="breadcrumb"><a href="http://docs.oracle.com/javafx/index.html">JavaFX Documentation Home</a> &gt; <a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm">Getting Started with JavaFX</a>
+  </div>
+  <!-- end #header --></div>
+<!--///////// End Header /////////-->
+  
+  
+<!--///////// Start Side Bar /////////-->  
+  <div id="sidebar">
+   
+  <!-- Sidebar item 1. This <div> is obligatory --> 
+  <div id="sidebar_version_box" class="FX_type_med_gry">
+     <h1>Release: JavaFX 2.2.40</h1>
+     <p>Last Updated: September 2013</p>
+   <p><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.pdf">Download as PDF</a></p>  
+  <!-- end obligatory sidebar_version_box --></div>
+  
+  <!-- Sidebar item 2 Table of Contents. This <div> is optional --> 
+  <div id="sidebar_toc_box" class="FX_type_med_gry">
+     <h2 class="boxtitle"><a href="#" onclick="toggle_visibility('toc');">[+] Show/Hide Table of Contents</a></h2>
+  <div id="toc" style="display:none;">
+
+   <h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm#BABGIDID">About This Tutorial</a></h2>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#CHDBCAII"><span class="secnum">1</span> Hello World, JavaFX Style</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref2">Construct the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref4">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref6">Where to Go Next</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABDDGEE"><span class="secnum">2</span> Creating a Form in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref8">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref9">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref10">Add Text, Labels, and Text Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref12">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABHABBF">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref14">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref16">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#BEIBBBCI"><span class="secnum">3</span> Fancy Forms with JavaFX CSS</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref18">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref19">Create the CSS File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref20">Add a Background Image</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref22">Style the Labels</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref24">Style Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref26">Style the Button</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref29">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCCHII"><span class="secnum">4</span> Using FXML to Create a User Interface</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDGFFFF">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDFJABA">Load the FXML Source File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDEBIBJ">Modify the Import Statements</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCDGEF">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCBAAH">Add Text and Password Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIAHDH">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDJDGCE">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIBFJD">Use a Scripting Language to Handle Events</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CIHCIEED">Style the Application with CSS</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#sthref35">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#BABCJFJC"><span class="secnum">5</span> Animation and Visual Effects in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref38">Set Up the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref39">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref40">Add Graphics</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref42">Add a Visual Effect</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref44">Create a Background Gradient</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref47">Apply a Blend Mode</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref49">Add Animation</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref51">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA"><span class="secnum">6</span> Deploying Your First JavaFX Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFBCHC">Deployment Modes</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCHEHA">Packaging the Application in NetBeans IDE</a>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#sthref54">Sizing the Application Window</a></li>
+</ul>
+</li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCIGGB">Running the Application Outside NetBeans IDE</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFAFEC">Deploying the Packaged Files</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABGAGDA">Other Ways to Package JavaFX Applications</a></li>
+</ul> 
+
+  <!-- End toggle box --></div>
+  <!-- End item 2 TOC box --></div> 
+  
+  <!-- Sidebar item 3 DemoApp box. This <div> is optional --> 
+     <div id="sidebar_demoapp_box" class="FX_type_med_gry">
+
+    <h2 class="boxtitle">Application Files</h2>
+    <h3>View Source Code</h3>
+      <ul>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.java.html">Login.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.java.html">Login.java with CSS</a></li>
+
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.css.html">Login.css</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/background.jpg.html">background.jpg</a></li>
+       <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.java.html">FXMLExample.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_example.fxml.html">fxml_example.fxml</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExampleController.java.html">FXMLExampleController.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a></li>
+
+      </ul>
+    
+	 <h3>Download Source Code</h3>
+      <ul>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.zip">Login.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.zip">LoginCSS.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.zip">FXMLExample.zip</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.zip">ColorfulCircles.zip</a></li>
+      </ul>
+  
+    
+   </div>  
+  <!-- End item 3 DemoApp box -->
+  
+  <!-- Sidebar item 4 Profile box. This <div> is optional --> 
+     <div id="sidebar_profile_box" class="FX_type_med_gry">
+    <h2 class="boxtitle">Profiles</h2>
+
+    <div class="profile">
+     <h3>Gail Chappell</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p>
+        <img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/gail_chappell.jpeg" alt="The picture of the author">Gail is part of the JavaFX documentation team and enjoys working on cutting-edge, innovative documentation. 
+    </p>
+
+   </div>
+
+    <div class="profile">
+    <h3>Nancy Hildebrandt</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p><img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/nancy_hildebrandt.jpeg" alt="The picture of the author">Nancy is a technical writer 
+    in the JavaFX group. She has a background in content management systems, enterprise server-client software, and XML. 
+    She lives on 480 acres in the middle of nowhere with horses, a donkey, dogs, cats, and chickens, and stays 
+    connected by satellite. </p>
+   </div>
+
+
+    </div>  
+  <!-- end Box 4 Profile -->  
+  
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <div id="sidebar_feedback_box" class="FX_type_med_gry">
+
+<h2 class="boxtitle">We Welcome Your Comments</h2>
+
+<p>Send us <a href="mailto:jfx-docs-feedback_ww@oracle.com?subject=Feedback:%20Getting%20Started%20with%20JavaFX:%20Fancy%20Forms%20with%20JavaFX%20CSS">feedback about this document.</a></p>
+
+<p>If you have questions about JavaFX, please go to the <a href="http://forums.oracle.com/forums/forum.jspa?forumID=1385">forum.</a></p>
+
+</div>
+
+
+  <!-- end Box 5 Profile -->
+
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <!-- [REPLACE_SINGLEP_FEEDBACK] -->
+  <!-- end Box 5 Profile -->
+  
+  <!-- end #sidebar --></div>
+  
+  <!--///////// End Side Bar /////////-->
+  
+  
+<!--///////// Main Content /////////-->
+  <div id="mainContent">
+  
+  <!-- Book Info div is used only for multipage documents -->
+  <div id="bookTitle">
+      <h1>Getting Started with JavaFX </h1>
+  </div> 
+  <!-- End BookInfo div tag -->
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/form.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+   
+  
+  <div id="ind"> 
+
+<!-- /////////////// Start content copied from DARB output ////////////// -->
+
+	<a id="BABBGJBI" name="BABBGJBI"></a><a id="JFXGS184" name="JFXGS184"></a><a id="BEIBBBCI" name="BEIBBBCI"></a>
+<h1 class="chapter"><span class="secnum">3</span> Fancy Forms with JavaFX CSS</h1>
+<a id="JFXGS263" name="JFXGS263"></a>
+<p>This tutorial is about making your JavaFX application look attractive
+ by adding a Cascading Style Sheet (CSS). You develop a design, create a
+ <code>.css</code> file, and apply the new styles.</p>
+<p>In this tutorial, you will take a Login form that uses default styles
+ for labels, buttons, and background color, and, with a few simple CSS 
+modifications, turn it into a stylized application, as shown in <a href="#BEIHJCFB">Figure 3-1</a>.</p>
+<div class="figure"><a id="BEIHJCFB" name="BEIHJCFB"></a><a id="JFXGS249" name="JFXGS249"></a>
+<p class="titleinfigure">Figure 3-1 Login Form With and Without CSS</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/two_logins.png" alt="Description of Figure 3-1 follows" title="Description of Figure 3-1 follows" longdesc="img_text/two_logins.htm"><br>
+<a id="sthref17" name="sthref17" href="http://docs.oracle.com/javafx/2/get_started/img_text/two_logins.htm">Description of "Figure 3-1 Login Form With and Without CSS"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p>The tool used in this Getting Started tutorial is NetBeans IDE. 
+Before you begin, ensure that the version of NetBeans IDE that you are 
+using supports JavaFX 2. See the <a href="http://docs.oracle.com/javafx/release-documentation.html">System Requirements</a> for details.</p>
+<a id="JFXGS186" name="JFXGS186"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref18" name="sthref18"></a>
+<h2 class="sect1">Create the Project</h2>
+<p>If you followed the Getting Started guide from the start, then you 
+already created the Login project required for this tutorial. If not, 
+download the Login project by right-clicking <a href="http://docs.oracle.com/javafx/2/get_started/Login.zip"><span class="bold">Login.zip</span></a> and saving it to your file system. Extract the files from the zip file, and then open the project in NetBeans IDE.</p>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS187" name="JFXGS187"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref19" name="sthref19"></a>
+<h2 class="sect1">Create the CSS File</h2>
+<p>Your first task is to create a new CSS file and save it in the same 
+directory as the main class of your application. After that, you must 
+make the JavaFX application aware of the newly added Cascading Style 
+Sheet.</p>
+<ol>
+<li>
+<p>In the NetBeans IDE Projects window, expand the <span class="bold">Login</span> project node and then the <span class="bold">Source Packages</span> directory node.</p>
+</li>
+<li>
+<p>Right-click the <span class="bold">login</span> folder under the Source Packages directory and choose <span class="bold">New</span>, then <span class="bold">Other</span>.</p>
+</li>
+<li>
+<p>In the New File dialog box, choose <span class="bold">Other</span>, then <span class="bold">Cascading Style Sheet</span>, and click <span class="bold">Next</span>.</p>
+</li>
+<li>
+<p>Enter <span class="bold">Login</span> for the File Name text field and ensure the Folder text field value is <code>src\login</code>.</p>
+</li>
+<li>
+<p>Click <span class="bold">Finish</span>.</p>
+</li>
+<li>
+<p>In the <code>Login.java</code> file, initialize the <code>style sheets</code> variable of the <code>Scene</code> class to point to the Cascading Style Sheet by including the line of code shown in bold below so that it appears as shown in <a href="#BABBJFAH">Example 3-1</a>.</p>
+<div class="example"><a id="BABBJFAH" name="BABBJFAH"></a>
+<p class="titleinexample">Example 3-1 Initialize the stylesheets Variable</p>
+<pre xml:space="preserve" class="oac_no_warn">Scene scene = new Scene(grid, 300, 275);
+primaryStage.setScene(scene);
+<code><span class="codeinlinebold">scene.getStylesheets().add</span></code>
+<code><span class="codeinlinebold"> (Login.class.getResource("Login.css").toExternalForm());</span></code>
+primaryStage.show();
+</pre></div>
+<!-- class="example" -->
+<p>This code looks for the style sheet in the <code>src\login</code> directory in the NetBeans project.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS188" name="JFXGS188"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref20" name="sthref20"></a>
+<h2 class="sect1">Add a Background Image</h2>
+<p>A background image helps make your form more attractive. For this tutorial, you add a gray background with a linen-like texture.</p>
+<p>First, download the background image by right-clicking <a href="http://docs.oracle.com/javafx/2/get_started/background.jpg"><span class="bold">background.jpg</span></a> and saving it to your file system. Then, copy the file into the <code>src\login</code> folder in the Login NetBeans project.</p>
+<p>Now, add the code for the <code>background-image</code> property to the CSS file. Remember that the path is relative to the style sheet. So, in the code in <a href="#BABDHCFE">Example 3-2</a>, the <code>background.jpg</code> image is in the same directory as the <code>Login.css</code> file.</p>
+<div class="example"><a id="BABDHCFE" name="BABDHCFE"></a><a id="JFXGS189" name="JFXGS189"></a>
+<p class="titleinexample">Example 3-2 Background Image</p>
+<pre xml:space="preserve" class="oac_no_warn">.root {
+     -fx-background-image: url("background.jpg");
+}
+</pre></div>
+<!-- class="example" -->
+<p>The background image is applied to the <code>.root</code> style, which means it is applied to the root node of the <code>Scene</code> instance. The style definition consists of the name of the property (<code>-fx-background-image</code>) and the value for the property (<code>url(“background.jpg”)</code>).</p>
+<p><a href="#BEICGGFA">Figure 3-2</a> shows the login form with the new gray background.</p>
+<div class="figure"><a id="BEICGGFA" name="BEICGGFA"></a><a id="JFXGS250" name="JFXGS250"></a>
+<p class="titleinfigure">Figure 3-2 Gray Linen Background</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_css_background.png" alt="Description of Figure 3-2 follows" title="Description of Figure 3-2 follows" longdesc="img_text/login_css_background.htm"><br>
+<a id="sthref21" name="sthref21" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_css_background.htm">Description of "Figure 3-2 Gray Linen Background"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS191" name="JFXGS191"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref22" name="sthref22"></a>
+<h2 class="sect1">Style the Labels</h2>
+<p>The next controls to enhance are the labels. You will use the <code>.label</code> style class, which means the styles will affect all labels in the form. The code is in <a href="#BEIIFIEG">Example 3-3</a>.</p>
+<div class="example"><a id="BEIIFIEG" name="BEIIFIEG"></a><a id="JFXGS192" name="JFXGS192"></a>
+<p class="titleinexample">Example 3-3 Font Size, Fill, Weight, and Effect on Labels</p>
+<pre xml:space="preserve" class="oac_no_warn">.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+</pre></div>
+<!-- class="example" -->
+<p>This example increases the font size and weight and applies a drop 
+shadow of a gray color (#333333). The purpose of the drop shadow is to 
+add contrast between the dark gray text and the light gray background. 
+See the section on effects in the <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#typeeffect">JavaFX CSS Reference Guide</a> for details on the parameters of the drop shadow property.</p>
+<p>The enhanced User Name and Password labels are shown in <a href="#BEIIJICE">Figure 3-3</a>.</p>
+<div class="figure"><a id="BEIIJICE" name="BEIIJICE"></a><a id="JFXGS251" name="JFXGS251"></a>
+<p class="titleinfigure">Figure 3-3 Bigger, Bolder Labels with Drop Shadow</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_css_labels.png" alt="Description of Figure 3-3 follows" title="Description of Figure 3-3 follows" longdesc="img_text/login_css_labels.htm"><br>
+<a id="sthref23" name="sthref23" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_css_labels.htm">Description of "Figure 3-3 Bigger, Bolder Labels with Drop Shadow"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS194" name="JFXGS194"></a>
+<div class="sect1"><a id="sthref24" name="sthref24"></a>
+<h2 class="sect1">Style Text</h2>
+<p>Now, create some special effects on the two <code>Text</code> objects in the form: <code>scenetitle</code>, which includes the text <code>Welcome</code>, and <code>actiontarget</code>, which is the text that is returned when the user presses the Sign in button. You can apply different styles to <code>Text</code> objects used in such diverse ways.</p>
+<ol>
+<li>
+<p>In the <code>Login.java</code> file, remove the following lines of code that define the inline styles currently set for the text objects:</p>
+<p><code>scenetitle.setFont(Font.font(“Tahoma”, FontWeight.NORMAL, 20));</code></p>
+<p><code>actiontarget.setFill(Color.FIREBRICK);</code></p>
+<p>By switching to CSS over inline styles, you separate the design from 
+the content. This approach makes it easier for a designer to have 
+control over the style without having to modify content.</p>
+</li>
+<li>
+<p>Create an ID for each text node by using the <code>setID()</code> method of the Node class:</p>
+<p><code>scenetitle.setId("welcome-text");</code></p>
+<p><code>actiontarget.setId("actiontarget");</code></p>
+</li>
+<li>
+<p>In the <code>Login.css</code> file, define the style properties for the <code>welcome-text</code> and <code>actiontarget</code> IDs. For the style name, use the ID preceded by a number sign (#), as shown in <a href="#BABEHDBB">Example 3-4</a>.</p>
+<div class="example"><a id="BABEHDBB" name="BABEHDBB"></a><a id="JFXGS195" name="JFXGS195"></a>
+<p class="titleinexample">Example 3-4 Text Effect</p>
+<pre xml:space="preserve" class="oac_no_warn">#welcome-text {
+   -fx-font-size: 32px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: #818181;
+   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+#actiontarget {
+  -fx-fill: FIREBRICK;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );  
+}
+</pre></div>
+<!-- class="example" --></li>
+</ol>
+<p>The size of the Welcome text is increased to 32 points and the font 
+is changed to Arial Black. The text fill color is set to a dark gray 
+color (#818181) and an inner shadow effect is applied, creating an 
+embossing effect. You can apply an inner shadow to any color by changing
+ the text fill color to be a darker version of the background. See the 
+section on effects in the <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#typeeffect">JavaFX CSS Reference Guide</a> for details about the parameters of inner shadow property.</p>
+<p>The style definition for <code>actiontarget</code> is similar to what you have seen before.</p>
+<p><a href="#BEIBGIAB">Figure 3-4</a> shows the font changes and shadow effects on the two <code>Text</code> objects.</p>
+<div class="figure"><a id="BEIBGIAB" name="BEIBGIAB"></a><a id="JFXGS252" name="JFXGS252"></a>
+<p class="titleinfigure">Figure 3-4 Text with Shadow Effects</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_css_text.png" alt="Description of Figure 3-4 follows" title="Description of Figure 3-4 follows" longdesc="img_text/login_css_text.htm"><br>
+<a id="sthref25" name="sthref25" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_css_text.htm">Description of "Figure 3-4 Text with Shadow Effects"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS197" name="JFXGS197"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref26" name="sthref26"></a>
+<h2 class="sect1">Style the Button</h2>
+<p>The next step is to style the button, making it change style when the
+ user hovers the mouse over it. This change will give users an 
+indication that the button is interactive, a standard design practice.</p>
+<p>First, create the style for the initial state of the button by adding the code in <a href="#BABCCDDI">Example 3-5</a>. This code uses the <code>.button</code> style class selector, such that if you add a button to the form at a later date, then the new button will also use this style.</p>
+<div class="example"><a id="BABCCDDI" name="BABCCDDI"></a><a id="JFXGS198" name="JFXGS198"></a>
+<p class="titleinexample">Example 3-5 Drop Shadow for Button</p>
+<pre xml:space="preserve" class="oac_no_warn">.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+</pre></div>
+<!-- class="example" -->
+<p>Now, create a slightly different look for when the user hovers the 
+mouse over the button. You do this with the hover pseudo-class. A 
+pseudo-class includes the selector for the class and the name for the 
+state separated by a colon (:), as shown in <a href="#BEIHDDGE">Example 3-6</a>.</p>
+<div class="example"><a id="BEIHDDGE" name="BEIHDDGE"></a><a id="JFXGS199" name="JFXGS199"></a>
+<p class="titleinexample">Example 3-6 Button Hover Style</p>
+<pre xml:space="preserve" class="oac_no_warn">.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+</pre></div>
+<!-- class="example" -->
+<p><a href="#BEIFGBEB">Figure 3-5</a> shows the initial and hover states of the button with its new blue-gray background and white bold text.</p>
+<div class="figure"><a id="BEIFGBEB" name="BEIFGBEB"></a><a id="JFXGS200" name="JFXGS200"></a>
+<p class="titleinfigure">Figure 3-5 Initial and Hover Button States</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/buttons2.png" alt="Description of Figure 3-5 follows" title="Description of Figure 3-5 follows" longdesc="img_text/buttons2.htm"><br>
+<a id="sthref27" name="sthref27" href="http://docs.oracle.com/javafx/2/get_started/img_text/buttons2.htm">Description of "Figure 3-5 Initial and Hover Button States"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p><a href="#BEIEAHHB">Figure 3-6</a> shows the final application.</p>
+<div class="figure"><a id="BEIEAHHB" name="BEIEAHHB"></a><a id="JFXGS253" name="JFXGS253"></a>
+<p class="titleinfigure">Figure 3-6 Final Stylized Application</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/login_css_final.png" alt="Description of Figure 3-6 follows" title="Description of Figure 3-6 follows" longdesc="img_text/login_css_final.htm"><br>
+<a id="sthref28" name="sthref28" href="http://docs.oracle.com/javafx/2/get_started/img_text/login_css_final.htm">Description of "Figure 3-6 Final Stylized Application"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS205" name="JFXGS205"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref29" name="sthref29"></a>
+<h2 class="sect1">Where to Go from Here</h2>
+<p>Here are some things for you to try next:</p>
+<ul>
+<li>
+<p>See what you can create using CSS. Some documents that can help you are <a href="http://docs.oracle.com/javafx/2/css_tutorial/jfxpub-css_tutorial.htm">Skinning JavaFX Applications with CSS</a>, <a href="http://docs.oracle.com/javafx/2/charts/css-styles.htm#CIHGIAGE">Styling Charts with CSS</a>, and the <a href="http://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html">JavaFX CSS Reference Guide</a>. <a href="http://docs.oracle.com/javafx/scenebuilder/1/user_guide/stylesheet-support.htm#CHDCGIBJ">Skinning with CSS and CSS Analyzer</a> also provides information on how you can use the JavaFX Scene Builder tool to skin your JavaFX FXML layout.</p>
+</li>
+<li>
+<p>See <a href="http://fxexperience.com/2011/12/styling-fx-buttons-with-css/">Styling FX Buttons with CSS</a> for examples of how to create common button styles using CSS.</p>
+</li>
+<li>
+<p>Try deploying your application outside NetBeans IDE. See <a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA">Deploying Your First JavaFX Application</a>.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+	
+	
+
+    <!-- /////////////// End content copied from DARB output ////////////// -->
+
+    </div>  <!-- End ind div tag --> 
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/form.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+
+    
+<!-- end #mainContent --></div><br class="clearfloat">
+<!--///////// End Main Content /////////-->	
+    
+    
+    
+<!--///////// Footer /////////-->
+  <div id="footer">
+  
+  <!-- Start SiteCatalyst (Omniture) code   -->
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code_download.js"></script>
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Fancy%20Forms%20with%20JavaFX%20CSS%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code.js"></script>
+
+ 
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+<!--  Below code will send the info to Omniture server -->
+<script type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+ 
+<!-- End SiteCatalyst code --> 
+
+<!-- Footer Legal info -->
+  <div id="fx_blur"><span class="copyrightlogo">Copyright&nbsp;©&nbsp;2008, 2013,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span> 
+  <a href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm"><br>
+  <span class="copyrightlogo">Legal Notices</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="copyrightlogo"><a href="http://docs.oracle.com/javafx/dcommon/html/accss.htm">Accessibility Statement</a></span>
+  </div> <!-- End footer legal info -->
+  
+  <!-- end #footer --></div>
+<!--///////// End Footer /////////-->
+
+<!-- end #container --></div>
+
+
+
+
+
+</body></html>

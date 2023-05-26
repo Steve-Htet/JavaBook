@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <title>Getting Started with JavaFX: Animation and Visual Effects in JavaFX | JavaFX 2 Tutorials and Documentation</title> 
+
+<!-- Add DARB meta tags here -->
+
+<!-- Start JavaFX meta tags -->
+<meta name="generator" content="Oracle DARB XHTML Converter (Mode = document) - Version 1.0.16 Build 1">
+<meta name="date" content="2013-08-30T17:28:45Z">
+<meta name="description" content="You can use JavaFX to quickly develop applications with rich user experiences. In this Getting Started tutorial, you will learn to create animated objects and attain complex effects with very little coding.">
+<meta name="robots" content="noarchive">
+<meta name="doctitle" content="Animation and Visual Effects in JavaFX">
+<meta name="relnum" content="Release 2.2.40">
+<meta name="partnum" content="E20473-09">
+<meta name="description" content="Get started with JavaFX 2 by creating simple applications that introduce you to layouts, CSS, FXML, visual effects, animation, and deployment.">
+<meta name="keywords" content="Get started with JavaFX, get started with JavaFX 2, get started guide, JavaFX getting started, JavaFX getting started guide, JavaFX, JavaFX 2, Java FX, Java FX 2, RIA, Web, HTML, developer, Internet, CSS, deployment, animation">
+
+<!-- Persistent copyright link from DARB output -->
+<link rel="copyright" href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm" title="Copyright" type="text/html">
+
+<!-- Links to JavaFX output template style sheets -->
+<link href="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-position.css" rel="stylesheet" type="text/css">
+<link href="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-darb-fonts.css" rel="stylesheet" type="text/css">
+
+
+<!-- START Prev and next buttons  -->
+
+<!-- END prev/next link tags -->
+
+
+<!-- Markup to fix IE CSS display problems -->
+<!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+.javafx #sidebar1 { width: 220px; }
+</style>
+<![endif]-->
+<!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+.javafx #sidebar1 { padding-top: 30px; }
+.javafx #mainContent li p{ margin:0; padding-bottom: 0px; }
+.javafx #mainContent { zoom: 1; }
+.javafx #mainContent {
+	margin: 0px 290px 0px 0px; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	width:600px;/*should be 615 but ie6 doesn't work;*/
+	border-right-style:none;
+	border-right-color:#C7C7C7;
+	border-right-width:0px;
+	background-image:url(../../javafx/images/fx_boxback.jpg);
+	background-repeat:no-repeat;
+	z-index:0;
+} 
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+
+<!-- Visibility toggle script -->
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
+</head>
+
+<body class="javafx">
+<!-- The following markup is required for accessibility -->
+<noscript>
+JavaScript is not supported by your browser.  JavaScript support is required for full functionality of this page.
+</noscript> 
+
+
+<!-- ///////// Container ///////// -->
+  <div id="container">
+
+<!--///////// Header /////////-->
+  <div id="header">
+  	<div id="headerfxtrail" class="breadcrumb"><a href="http://docs.oracle.com/javafx/index.html">JavaFX Documentation Home</a> &gt; <a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm">Getting Started with JavaFX</a>
+  </div>
+  <!-- end #header --></div>
+<!--///////// End Header /////////-->
+  
+  
+<!--///////// Start Side Bar /////////-->  
+  <div id="sidebar">
+   
+  <!-- Sidebar item 1. This <div> is obligatory --> 
+  <div id="sidebar_version_box" class="FX_type_med_gry">
+     <h1>Release: JavaFX 2.2.40</h1>
+     <p>Last Updated: September 2013</p>
+   <p><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.pdf">Download as PDF</a></p>  
+  <!-- end obligatory sidebar_version_box --></div>
+  
+  <!-- Sidebar item 2 Table of Contents. This <div> is optional --> 
+  <div id="sidebar_toc_box" class="FX_type_med_gry">
+     <h2 class="boxtitle"><a href="#" onclick="toggle_visibility('toc');">[+] Show/Hide Table of Contents</a></h2>
+  <div id="toc" style="display:none;">
+
+   <h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm#BABGIDID">About This Tutorial</a></h2>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#CHDBCAII"><span class="secnum">1</span> Hello World, JavaFX Style</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref2">Construct the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref4">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/hello_world.htm#sthref6">Where to Go Next</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABDDGEE"><span class="secnum">2</span> Creating a Form in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref8">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref9">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref10">Add Text, Labels, and Text Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref12">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABHABBF">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref14">Run the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/form.htm#sthref16">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#BEIBBBCI"><span class="secnum">3</span> Fancy Forms with JavaFX CSS</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref18">Create the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref19">Create the CSS File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref20">Add a Background Image</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref22">Style the Labels</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref24">Style Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref26">Style the Button</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/css.htm#sthref29">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCCHII"><span class="secnum">4</span> Using FXML to Create a User Interface</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDGFFFF">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDFJABA">Load the FXML Source File</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDEBIBJ">Modify the Import Statements</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCDGEF">Create a GridPane Layout</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDCBAAH">Add Text and Password Fields</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIAHDH">Add a Button and Text</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDJDGCE">Add Code to Handle an Event</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CHDIBFJD">Use a Scripting Language to Handle Events</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#CIHCIEED">Style the Application with CSS</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm#sthref35">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#BABCJFJC"><span class="secnum">5</span> Animation and Visual Effects in JavaFX</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref38">Set Up the Application</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref39">Set Up the Project</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref40">Add Graphics</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref42">Add a Visual Effect</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref44">Create a Background Gradient</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref47">Apply a Blend Mode</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref49">Add Animation</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/animation.htm#sthref51">Where to Go from Here</a></li>
+</ul>
+<h2 class="tocheader"><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA"><span class="secnum">6</span> Deploying Your First JavaFX Application</a></h2>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFBCHC">Deployment Modes</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCHEHA">Packaging the Application in NetBeans IDE</a>
+<ul style="list-style-type:none">
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#sthref54">Sizing the Application Window</a></li>
+</ul>
+</li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABCIGGB">Running the Application Outside NetBeans IDE</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABFAFEC">Deploying the Packaged Files</a></li>
+<li><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABGAGDA">Other Ways to Package JavaFX Applications</a></li>
+</ul> 
+
+  <!-- End toggle box --></div>
+  <!-- End item 2 TOC box --></div> 
+  
+  <!-- Sidebar item 3 DemoApp box. This <div> is optional --> 
+     <div id="sidebar_demoapp_box" class="FX_type_med_gry">
+
+    <h2 class="boxtitle">Application Files</h2>
+    <h3>View Source Code</h3>
+      <ul>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.java.html">Login.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.java.html">Login.java with CSS</a></li>
+
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.css.html">Login.css</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/background.jpg.html">background.jpg</a></li>
+       <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.java.html">FXMLExample.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/fxml_example.fxml.html">fxml_example.fxml</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExampleController.java.html">FXMLExampleController.java</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a></li>
+
+      </ul>
+    
+	 <h3>Download Source Code</h3>
+      <ul>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/Login.zip">Login.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/LoginCSS.zip">LoginCSS.zip</a></li>
+         <li><a href="http://docs.oracle.com/javafx/2/get_started/FXMLExample.zip">FXMLExample.zip</a></li>
+        <li><a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.zip">ColorfulCircles.zip</a></li>
+      </ul>
+  
+    
+   </div>  
+  <!-- End item 3 DemoApp box -->
+  
+  <!-- Sidebar item 4 Profile box. This <div> is optional --> 
+     <div id="sidebar_profile_box" class="FX_type_med_gry">
+    <h2 class="boxtitle">Profiles</h2>
+
+    <div class="profile">
+     <h3>Gail Chappell</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p>
+        <img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/gail_chappell.jpeg" alt="The picture of the author">Gail is part of the JavaFX documentation team and enjoys working on cutting-edge, innovative documentation. 
+    </p>
+
+   </div>
+
+    <div class="profile">
+    <h3>Nancy Hildebrandt</h3>
+    <p><em>Technical Writer, Oracle</em> </p>
+    <p><img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/nancy_hildebrandt.jpeg" alt="The picture of the author">Nancy is a technical writer 
+    in the JavaFX group. She has a background in content management systems, enterprise server-client software, and XML. 
+    She lives on 480 acres in the middle of nowhere with horses, a donkey, dogs, cats, and chickens, and stays 
+    connected by satellite. </p>
+   </div>
+
+
+    </div>  
+  <!-- end Box 4 Profile -->  
+  
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <div id="sidebar_feedback_box" class="FX_type_med_gry">
+
+<h2 class="boxtitle">We Welcome Your Comments</h2>
+
+<p>Send us <a href="mailto:jfx-docs-feedback_ww@oracle.com?subject=Feedback:%20Getting%20Started%20with%20JavaFX:%20Animation%20and%20Visual%20Effects%20in%20JavaFX">feedback about this document.</a></p>
+
+<p>If you have questions about JavaFX, please go to the <a href="http://forums.oracle.com/forums/forum.jspa?forumID=1385">forum.</a></p>
+
+</div>
+
+
+  <!-- end Box 5 Profile -->
+
+  <!-- Sidebar item 5 Feedback box. This <div> is optional -->
+  <!-- [REPLACE_SINGLEP_FEEDBACK] -->
+  <!-- end Box 5 Profile -->
+  
+  <!-- end #sidebar --></div>
+  
+  <!--///////// End Side Bar /////////-->
+  
+  
+<!--///////// Main Content /////////-->
+  <div id="mainContent">
+  
+  <!-- Book Info div is used only for multipage documents -->
+  <div id="bookTitle">
+      <h1>Getting Started with JavaFX </h1>
+  </div> 
+  <!-- End BookInfo div tag -->
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+   
+  
+  <div id="ind"> 
+
+<!-- /////////////// Start content copied from DARB output ////////////// -->
+
+	<a id="BABEJAFF" name="BABEJAFF"></a><a id="JFXGS101" name="JFXGS101"></a><a id="BABCJFJC" name="BABCJFJC"></a>
+<h1 class="chapter"><span class="secnum">5</span> Animation and Visual Effects in JavaFX</h1>
+<a id="JFXGS266" name="JFXGS266"></a>
+<p>You can use JavaFX to quickly develop applications with rich user 
+experiences. In this Getting Started tutorial, you will learn to create 
+animated objects and attain complex effects with very little coding.</p>
+<p><a href="#BABFCHDH">Figure 5-1</a> shows the application to be created.</p>
+<div class="figure"><a id="BABFCHDH" name="BABFCHDH"></a><a id="JFXGS102" name="JFXGS102"></a>
+<p class="titleinfigure">Figure 5-1 Colorful Circles Application</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/colorfulcircles.png" alt="Description of Figure 5-1 follows" title="Description of Figure 5-1 follows" longdesc="img_text/colorfulcircles.htm"><br>
+<a id="sthref36" name="sthref36" href="http://docs.oracle.com/javafx/2/get_started/img_text/colorfulcircles.htm">Description of "Figure 5-1 Colorful Circles Application"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p><a href="#BABBHDBC">Figure 5-2</a> shows the scene graph for the <code>ColorfulCircles</code> application. Nodes that branch are instantiations of the <code>Group</code> class, and the nonbranching nodes, also known as leaf nodes, are instantiations of the <code>Rectangle</code> and <code>Circle</code> classes.</p>
+<div class="figure"><a id="BABBHDBC" name="BABBHDBC"></a><a id="JFXGS243" name="JFXGS243"></a>
+<p class="titleinfigure">Figure 5-2 Colorful Circles Scene Graph</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/scenegraph_finish.png" alt="Description of Figure 5-2 follows" title="Description of Figure 5-2 follows" longdesc="img_text/scenegraph_finish.htm"><br>
+<a id="sthref37" name="sthref37" href="http://docs.oracle.com/javafx/2/get_started/img_text/scenegraph_finish.htm">Description of "Figure 5-2 Colorful Circles Scene Graph"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p>The tool used in this Getting Started tutorial is NetBeans IDE. 
+Before you begin, ensure that the version of NetBeans IDE that you are 
+using supports JavaFX 2. See the <a href="http://docs.oracle.com/javafx/release-documentation.html">System Requirements</a> for details.</p>
+<a id="JFXGS104" name="JFXGS104"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref38" name="sthref38"></a>
+<h2 class="sect1">Set Up the Application</h2>
+<p>Set up your JavaFX project in NetBeans IDE as follows:</p>
+<ol>
+<li>
+<p>From the <span class="gui-object-action">File</span> menu, choose <span class="gui-object-action">New Project</span>.</p>
+</li>
+<li>
+<p>In the <span class="bold">JavaFX</span> application category, choose <span class="bold">JavaFX Application</span>. Click <span class="gui-object-action">Next</span>.</p>
+</li>
+<li>
+<p>Name the project <span class="bold">ColorfulCircles</span> and click <span class="gui-object-action">Finish</span>.</p>
+</li>
+<li>
+<p>Open the <a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a>
+ file, copy the import statements, and paste them into the source file 
+for your project, overwriting the import statements that NetBeans IDE 
+generated.</p>
+<p>Or, you can generate the import statements as you work your way 
+through the tutorial by using either the code completion feature or the 
+Fix Imports command from the Source menu in NetBeans IDE. When there is a
+ choice of import statements, choose the one that starts with <code>javafx</code>.</p>
+</li>
+</ol>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS105" name="JFXGS105"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref39" name="sthref39"></a>
+<h2 class="sect1">Set Up the Project</h2>
+<p>Delete the <code>ColorfulCircles</code> class from the source file that NetBeans IDE generated and replace it with the code in <a href="#CHDCICAD">Example 5-1</a>.</p>
+<div class="example"><a id="CHDCICAD" name="CHDCICAD"></a><a id="JFXGS106" name="JFXGS106"></a>
+<p class="titleinexample">Example 5-1 Basic Application</p>
+<pre xml:space="preserve" class="oac_no_warn">public class ColorfulCircles extends Application {
+ 
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
+    @Override
+    public void start(Stage primaryStage) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 800, 600, Color.BLACK);
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
+    }
+}
+</pre></div>
+<!-- class="example" -->
+<p>For the ColorfulCircles application, it is appropriate to use a group
+ node as the root node for the scene. The size of the group is dictated 
+by the size of the nodes within it. For most applications, however, you 
+want the nodes to track the size of the scene and change when the stage 
+is resized. In that case, you use a resizable layout node as the root, 
+as described in <a href="http://docs.oracle.com/javafx/2/get_started/form.htm#BABCIIBJ">Creating a Form in JavaFX</a>.</p>
+<p>You can compile and run the ColorfulCircles application now, and at 
+each step of the tutorial, to see the intermediate results. If you run 
+into problems, then take a look at the code in the <a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a> file. At this point, the application is a simple black window.</p>
+</div>
+<!-- class="sect1" -->
+<a id="JFXGS110" name="JFXGS110"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref40" name="sthref40"></a>
+<h2 class="sect1">Add Graphics</h2>
+<p>Next, create 30 circles by adding the code in <a href="#BABEHJGA">Example 5-2</a> before the <code>primaryStage.show()</code> line.</p>
+<div class="example"><a id="BABEHJGA" name="BABEHJGA"></a><a id="JFXGS111" name="JFXGS111"></a>
+<p class="titleinexample">Example 5-2 30 Circles</p>
+<pre xml:space="preserve" class="oac_no_warn">Group circles = new Group();
+for (int i = 0; i &lt; 30; i++) {
+   Circle circle = new Circle(150, Color.web("white", 0.05));
+   circle.setStrokeType(StrokeType.OUTSIDE);
+   circle.setStroke(Color.web("white", 0.16));
+   circle.setStrokeWidth(4);
+   circles.getChildren().add(circle);
+}
+root.getChildren().add(circles);
+</pre></div>
+<!-- class="example" -->
+<p>This code creates a group named <code>circles</code>, then uses a <code>for</code> loop to add 30 circles to the group. Each circle has a radius of <code>150</code>, fill color of <code>white</code>, and opacity level of <code>5</code> percent, meaning it is mostly transparent.</p>
+<p>To create a border around the circles, the code includes the <code>StrokeType</code> class. A stroke type of <code>OUTSIDE</code> means the boundary of the circle is extended outside the interior by the <code>StrokeWidth</code> value, which is <code>4</code>. The color of the stroke is <code>white</code>, and the opacity level is <code>16</code> percent, making it brighter than the color of the circles.</p>
+<p>The final line adds the <code>circles</code> group to the root node. This is a temporary structure. Later, you will modify this scene graph to match the one shown in <a href="#BABBHDBC">Figure 5-2</a>.</p>
+<p><a href="#BABICCEJ">Figure 5-3</a> shows the application. Because the
+ code does not yet specify a unique location for each circle, the 
+circles are drawn on top of one another, with the upper left-hand corner
+ of the window as the center point for the circles. The opacity of the 
+overlaid circles interacts with the black background, producing the gray
+ color of the circles.</p>
+<div class="figure"><a id="BABICCEJ" name="BABICCEJ"></a><a id="JFXGS112" name="JFXGS112"></a>
+<p class="titleinfigure">Figure 5-3 Circles</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/circles.png" alt="Description of Figure 5-3 follows" title="Description of Figure 5-3 follows" longdesc="img_text/circles.htm"><br>
+<a id="sthref41" name="sthref41" href="http://docs.oracle.com/javafx/2/get_started/img_text/circles.htm">Description of "Figure 5-3 Circles"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS113" name="JFXGS113"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref42" name="sthref42"></a>
+<h2 class="sect1">Add a Visual Effect</h2>
+<p>Continue by applying a box blur effect to the circles so that they appear slightly out of focus. The code is in <a href="#BABEEFEA">Example 5-3</a>. Add this code before the <code>primaryStage.show()</code> line.</p>
+<div class="example"><a id="BABEEFEA" name="BABEEFEA"></a><a id="JFXGS114" name="JFXGS114"></a>
+<p class="titleinexample">Example 5-3 Box Blur Effect</p>
+<pre xml:space="preserve" class="oac_no_warn">circles.setEffect(new BoxBlur(10, 10, 3));
+</pre></div>
+<!-- class="example" -->
+<p>This code sets the blur radius to <code>10</code> pixels wide by <code>10</code> pixels high, and the blur iteration to <code>3,</code>
+ making it approximate a Gaussian blur. This blurring technique produces
+ a smoothing effect on the edge of the circles, as shown in <a href="#BABCJGFI">Figure 5-4</a>.</p>
+<div class="figure"><a id="BABCJGFI" name="BABCJGFI"></a><a id="JFXGS115" name="JFXGS115"></a>
+<p class="titleinfigure">Figure 5-4 Box Blur on Circles</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/blur.png" alt="Description of Figure 5-4 follows" title="Description of Figure 5-4 follows" longdesc="img_text/blur.htm"><br>
+<a id="sthref43" name="sthref43" href="http://docs.oracle.com/javafx/2/get_started/img_text/blur.htm">Description of "Figure 5-4 Box Blur on Circles"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS116" name="JFXGS116"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref44" name="sthref44"></a>
+<h2 class="sect1">Create a Background Gradient</h2>
+<p>Now, create a rectangle and fill it with a linear gradient, as shown in <a href="#BABIICJF">Example 5-4</a>.</p>
+<p>Add the code before the <code>root.getChildren().add(circles)</code> line so that the gradient rectangle appears behind the circles.</p>
+<div class="example"><a id="BABIICJF" name="BABIICJF"></a><a id="JFXGS117" name="JFXGS117"></a>
+<p class="titleinexample">Example 5-4 Linear Gradient</p>
+<pre xml:space="preserve" class="oac_no_warn">Rectangle colors = new Rectangle(scene.getWidth(), scene.getHeight(),
+     new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE, new 
+         Stop[]{
+            new Stop(0, Color.web("#f8bd55")),
+            new Stop(0.14, Color.web("#c0fe56")),
+            new Stop(0.28, Color.web("#5dfbc1")),
+            new Stop(0.43, Color.web("#64c2f8")),
+            new Stop(0.57, Color.web("#be4af7")),
+            new Stop(0.71, Color.web("#ed5fc2")),
+            new Stop(0.85, Color.web("#ef504c")),
+            new Stop(1, Color.web("#f2660f")),}));
+colors.widthProperty().bind(scene.widthProperty());
+colors.heightProperty().bind(scene.heightProperty());
+root.getChildren().add(colors);
+</pre></div>
+<!-- class="example" -->
+<p>This code creates a rectangle named <code>colors</code>. The 
+rectangle is the same width and height as the scene and is filled with a
+ linear gradient that starts in the lower left-hand corner (0, 1) and 
+ends in the upper right-hand corner (1, 0). The value of <code>true</code> means the gradient is proportional to the rectangle, and <code>NO_CYCLE</code> indicates that the color cycle will not repeat. The <code>Stop[]</code> sequence indicates what the gradient color should be at a particular spot.</p>
+<p>The next two lines of code make the linear gradient adjust as the 
+size of the scene changes by binding the width and height of the 
+rectangle to the width and height of the scene. See <a href="http://docs.oracle.com/javafx/2/binding/jfxpub-binding.htm">Using JavaFX Properties and Bindings</a> for more information on binding.</p>
+<p>The final line of code adds the <code>colors</code> rectangle to the root node.</p>
+<p>The gray circles with the blurry edges now appear on top of a rainbow of colors, as shown in <a href="#BABIECDC">Figure 5-5</a>.</p>
+<div class="figure"><a id="BABIECDC" name="BABIECDC"></a><a id="JFXGS118" name="JFXGS118"></a>
+<p class="titleinfigure">Figure 5-5 Linear Gradient</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/gradient.png" alt="Description of Figure 5-5 follows" title="Description of Figure 5-5 follows" longdesc="img_text/gradient.htm"><br>
+<a id="sthref45" name="sthref45" href="http://docs.oracle.com/javafx/2/get_started/img_text/gradient.htm">Description of "Figure 5-5 Linear Gradient"</a><br>
+<br></div>
+<!-- class="figure" -->
+<p><a href="#BABECHGH">Figure 5-6</a> shows the intermediate scene graph. At this point, the <code>circles</code> group and <code>colors</code> rectangle are children of the root node.</p>
+<div class="figure"><a id="BABECHGH" name="BABECHGH"></a><a id="JFXGS244" name="JFXGS244"></a>
+<p class="titleinfigure">Figure 5-6 Intermediate Scene Graph</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/scenegraph_intermed.png" alt="Description of Figure 5-6 follows" title="Description of Figure 5-6 follows" longdesc="img_text/scenegraph_intermed.htm"><br>
+<a id="sthref46" name="sthref46" href="http://docs.oracle.com/javafx/2/get_started/img_text/scenegraph_intermed.htm">Description of "Figure 5-6 Intermediate Scene Graph"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS120" name="JFXGS120"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref47" name="sthref47"></a>
+<h2 class="sect1">Apply a Blend Mode</h2>
+<p>Next, add color to the circles and darken the scene by adding an overlay blend effect. You will remove the <code>circles</code> group and the linear gradient rectangle from the scene graph and add them to the new overlay blend group.</p>
+<ol>
+<li><a id="CACECAEG" name="CACECAEG"></a>
+<p>Locate the following two lines of code:</p>
+<pre xml:space="preserve" class="oac_no_warn">root.getChildren().add(colors);
+root.getChildren().add(circles);
+</pre></li>
+<li>
+<p>Replace the two lines of code from Step <a href="#CACECAEG">1</a> with the code in <a href="#BABEDGDF">Example 5-5</a>.</p>
+<div class="example"><a id="BABEDGDF" name="BABEDGDF"></a><a id="JFXGS121" name="JFXGS121"></a>
+<p class="titleinexample">Example 5-5 Blend Mode</p>
+<pre xml:space="preserve" class="oac_no_warn">Group blendModeGroup = 
+    new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(),
+        Color.BLACK), circles), colors);
+colors.setBlendMode(BlendMode.OVERLAY);
+root.getChildren().add(blendModeGroup);
+</pre></div>
+<!-- class="example" --></li>
+</ol>
+<p>The group <code>blendModeGroup</code> sets up the structure for the overlay blend. The group contains two children. The first child is a new (unnamed) <code>Group</code> containing a new (unnamed) black rectangle and the previously created <code>circles</code> group. The second child is the previously created <code>colors</code> rectangle.</p>
+<p>The <code>setBlendMode()</code> method applies the overlay blend to the <code>colors</code> rectangle. The final line of code adds the <code>blendModeGroup</code> to the scene graph as a child of the root node, as depicted in <a href="#BABBHDBC">Figure 5-2</a>.</p>
+<p>An overlay blend is a common effect in graphic design applications. 
+Such a blend can darken an image or add highlights or both, depending on
+ the colors in the blend. In this case, the linear gradient rectangle is
+ used as the overlay. The black rectangle serves to keep the background 
+dark, while the nearly transparent circles pick up colors from the 
+gradient, but are also darkened.</p>
+<p><a href="#BABDJFAH">Figure 5-7</a> shows the results. You will see the full effect of the overlay blend when you animate the circles in the next step.</p>
+<div class="figure"><a id="BABDJFAH" name="BABDJFAH"></a><a id="JFXGS122" name="JFXGS122"></a>
+<p class="titleinfigure">Figure 5-7 Overlay Blend</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/blend.png" alt="Description of Figure 5-7 follows" title="Description of Figure 5-7 follows" longdesc="img_text/blend.htm"><br>
+<a id="sthref48" name="sthref48" href="http://docs.oracle.com/javafx/2/get_started/img_text/blend.htm">Description of "Figure 5-7 Overlay Blend"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS123" name="JFXGS123"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref49" name="sthref49"></a>
+<h2 class="sect1">Add Animation</h2>
+<p>The final step is to use JavaFX animations to move the circles:</p>
+<ol>
+<li>
+<p>If you have not done so already, add <code>import static java.lang.Math.random;</code> to the list of import statements.</p>
+</li>
+<li>
+<p>Add the animation code in <a href="#BABGIACI">Example 5-6</a> before the <code>primaryStage.show()</code> line.</p>
+<div class="example"><a id="BABGIACI" name="BABGIACI"></a><a id="JFXGS124" name="JFXGS124"></a>
+<p class="titleinexample">Example 5-6 Animation</p>
+<pre xml:space="preserve" class="oac_no_warn">Timeline timeline = new Timeline();
+for (Node circle: circles.getChildren()) {
+    timeline.getKeyFrames().addAll(
+        new KeyFrame(Duration.ZERO, // set start position at 0
+            new KeyValue(circle.translateXProperty(), random() * 800),
+            new KeyValue(circle.translateYProperty(), random() * 600)
+        ),
+        new KeyFrame(new Duration(40000), // set end position at 40s
+            new KeyValue(circle.translateXProperty(), random() * 800),
+            new KeyValue(circle.translateYProperty(), random() * 600)
+        )
+    );
+}
+// play 40s of animation
+timeline.play();
+</pre></div>
+<!-- class="example" --></li>
+</ol>
+<p>Animation is driven by a timeline, so this code creates a timeline, then uses a <code>for</code> loop to add two key frames to each of the 30 circles. The first key frame at 0 seconds uses the properties <code>translateXProperty</code> and <code>translateYProperty</code>
+ to set a random position of the circles within the window. The second 
+key frame at 40 seconds does the same. Thus, when the timeline is 
+played, it animates all circles from one random position to another over
+ a period of 40 seconds.</p>
+<p><a href="#BABDAFAF">Figure 5-8</a> shows the 30 colorful circles in motion, which completes the application. For the complete source code, see the <a href="http://docs.oracle.com/javafx/2/get_started/ColorfulCircles.java.html">ColorfulCircles.java</a> file.</p>
+<div class="figure"><a id="BABDAFAF" name="BABDAFAF"></a><a id="JFXGS125" name="JFXGS125"></a>
+<p class="titleinfigure">Figure 5-8 Animated Circles</p>
+<img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/colorfulcircles.png" alt="Description of Figure 5-8 follows" title="Description of Figure 5-8 follows" longdesc="img_text/colorfulcircles.htm"><br>
+<a id="sthref50" name="sthref50" href="http://docs.oracle.com/javafx/2/get_started/img_text/colorfulcircles.htm">Description of "Figure 5-8 Animated Circles"</a><br>
+<br></div>
+<!-- class="figure" --></div>
+<!-- class="sect1" -->
+<a id="JFXGS127" name="JFXGS127"></a>
+<div class="sect1"><!-- infolevel="all" infotype="General" --><a id="sthref51" name="sthref51"></a>
+<h2 class="sect1">Where to Go from Here</h2>
+<p>Here are several suggestions about what to do next:</p>
+<ul>
+<li>
+<p>Try deploying your application outside NetBeans IDE. See <a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm#BABIDHGA">Deploying Your First JavaFX Application</a>.</p>
+</li>
+<li>
+<p>Try the JavaFX samples, which you can download from the JDK Demos and Samples section of the Java SE Downloads page at <code><a href="http://www.oracle.com/technetwork/java/javase/downloads/">http://www.oracle.com/technetwork/java/javase/downloads/</a></code>. Especially take a look at the Ensemble application, which provides sample code for animations and effects.</p>
+</li>
+<li>
+<p>Read <a href="http://docs.oracle.com/javafx/2/animations/jfxpub-animations.htm"><code>Creating Transitions and Timeline Animation in JavaFX</code></a>. You will find more details on timeline animation as well as information on fade, path, parallel, and sequential transitions.</p>
+</li>
+<li>
+<p>See <a href="http://docs.oracle.com/javafx/2/visual_effects/jfxpub-visual_effects.htm"><code>Creating Visual Effects in JavaFX</code></a> for additional ways to enhance the look and design of your application, including reflection, lighting, and shadow effects.</p>
+</li>
+<li>
+<p>Try the JavaFX Scene Builder tool to create visually interesting 
+applications. This tool provides a visual layout environment for 
+designing the UI for JavaFX applications and generates FXML code. You 
+can use the Properties panel or the Modify option of the menu bar to add
+ effects to the UI elements. See the <a href="http://docs.oracle.com/javafx/scenebuilder/1/user_guide/inspector-panel.htm#JSBRG142"><code>Properties Panel</code></a> section or <a href="http://docs.oracle.com/javafx/scenebuilder/1/user_guide/menu-bar.htm#JSBRG110"><code>Table 3-3</code></a> in the <a href="http://docs.oracle.com/javafx/scenebuilder/1/user_guide/menu-bar.htm"><code>Menu Bar</code></a> section of the <a href="http://docs.oracle.com/javafx/scenebuilder/1/user_guide/jsbpub-user_guide.htm"><code>JavaFX Scene Builder User Guide</code></a> for information.</p>
+</li>
+</ul>
+</div>
+<!-- class="sect1" -->
+	
+	
+
+    <!-- /////////////// End content copied from DARB output ////////////// -->
+
+    </div>  <!-- End ind div tag --> 
+
+  <!-- START NEXT_PREVIOUS BUTTONS -->
+  <div class="pagestepper">
+<table class="simple oac_no_warn" summary="" cellpadding="0" cellspacing="0" width="100%">
+<tbody>
+<tr>
+<td><div align="left"><a href="http://docs.oracle.com/javafx/2/get_started/fxml_tutorial.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-previouspage.gif" alt="Previous" border="0"></a></div></td>
+<td><div align="right"><a href="http://docs.oracle.com/javafx/2/get_started/basic_deployment.htm"><img src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/javafx-nextpage.gif" alt="Next" border="0"></a></div></td>
+</tr>
+</tbody></table>
+</div>
+  <!-- END NEXT_PREVIOUS BUTTONS -->
+
+    
+<!-- end #mainContent --></div><br class="clearfloat">
+<!--///////// End Main Content /////////-->	
+    
+    
+    
+<!--///////// Footer /////////-->
+  <div id="footer">
+  
+  <!-- Start SiteCatalyst (Omniture) code   -->
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code_download.js"></script>
+<script type="text/javascript" src="Getting%20Started%20with%20JavaFX%20%20Animation%20and%20Visual%20Effects%20in%20JavaFX%20_%20JavaFX%202%20Tutorials%20and%20Documentation_files/s_code.js"></script>
+
+ 
+<!-- ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** -->
+
+<!--  Below code will send the info to Omniture server -->
+<script type="text/javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+ 
+<!-- End SiteCatalyst code --> 
+
+<!-- Footer Legal info -->
+  <div id="fx_blur"><span class="copyrightlogo">Copyright&nbsp;©&nbsp;2008, 2013,&nbsp;Oracle&nbsp;and/or&nbsp;its&nbsp;affiliates.&nbsp;All&nbsp;rights&nbsp;reserved.</span> 
+  <a href="http://docs.oracle.com/javafx/dcommon/html/cpyr.htm"><br>
+  <span class="copyrightlogo">Legal Notices</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="copyrightlogo"><a href="http://docs.oracle.com/javafx/dcommon/html/accss.htm">Accessibility Statement</a></span>
+  </div> <!-- End footer legal info -->
+  
+  <!-- end #footer --></div>
+<!--///////// End Footer /////////-->
+
+<!-- end #container --></div>
+
+
+
+
+
+</body></html>
